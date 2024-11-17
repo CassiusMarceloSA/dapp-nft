@@ -1,5 +1,7 @@
 "use client";
 
+import { authenticate } from "@/services/web3/web3";
+import { toResult } from "@/utils";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 
@@ -24,10 +26,19 @@ export default function Mint() {
   const [wallet, setWallet] = useState("");
   const [message, setMessage] = useState("");
 
-  const onLogin = () => {
+  const openseaURL = `${process.env.OPENSEA_URL}/${wallet}`;
+
+  const onLogin = async () => {
     setMessage("Logging in...");
-    setWallet("_WALLET_ADDRESS_HERE_");
-    localStorage.setItem("wallet", wallet);
+    const [authError, address] = await toResult(authenticate());
+
+    if (authError || !address) {
+      setMessage(authError?.message || "Failed to login");
+      return;
+    }
+
+    setWallet(address);
+    localStorage.setItem("wallet", address);
   };
   const onLogout = () => {
     setMessage("Logging out...");
@@ -45,6 +56,7 @@ export default function Mint() {
 
   useEffect(() => {
     const wallet = localStorage.getItem("wallet");
+    console.log(wallet)
     if (wallet) {
       setWallet(wallet);
     }
@@ -55,9 +67,14 @@ export default function Mint() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <h1>Mint</h1>
         {wallet ? (
-          <AuthButton id="logout-btn" onClick={onLogout}>
-            Disconnect
-          </AuthButton>
+          <>
+            <a href={openseaURL} target="_blank">
+              {wallet}
+            </a>
+            <AuthButton id="logout-btn" onClick={onLogout}>
+              Disconnect
+            </AuthButton>
+          </>
         ) : (
           <AuthButton id="login-btn" onClick={onLogin}>
             Connect
@@ -76,9 +93,9 @@ export default function Mint() {
             <button id="btnMin" onClick={onMint}>
               Mint
             </button>
-            <p>{message}</p>
           </>
         )}
+        <p>{message}</p>
       </main>
     </div>
   );
