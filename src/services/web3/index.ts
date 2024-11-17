@@ -1,1 +1,1 @@
-export * as web3 from './web3'
+export * from "./web3";
