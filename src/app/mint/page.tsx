@@ -1,6 +1,6 @@
 "use client";
 
-import { authenticate } from "@/services/web3/web3";
+import { authenticate, mint } from "@/services/web3";
 import { toResult } from "@/utils";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -45,9 +45,16 @@ export default function Mint() {
     setWallet("");
     localStorage.removeItem("wallet");
   };
-  const onMint = () => {
-    console.log(quantity);
+  const onMint = async () => {
     setMessage("Minting...");
+    const [txError, txHash] = await toResult(mint(quantity));
+
+    if (txError) {
+      setMessage(txError.message);
+      return;
+    }
+    setQuantity(1);
+    setMessage("Minted! TxHash generated: " + txHash);
   };
 
   const handleQuantity = (e: ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +63,7 @@ export default function Mint() {
 
   useEffect(() => {
     const wallet = localStorage.getItem("wallet");
-    console.log(wallet)
+
     if (wallet) {
       setWallet(wallet);
     }
