@@ -55,3 +55,24 @@ export async function authenticate(): Promise<string> {
   return accounts[0];
 }
 
+export async function mint(quantity: number): Promise<string | null> {
+  const provider = getProvider();
+  const contract = new ethers.Contract(CONTRACT__ADDRESS, ABI, provider);
+  const [signerError, signer] = await toResult(provider.getSigner());
+
+  if (signerError) {
+    throw new Error(getShortErrorMessage(signerError));
+  }
+  const instance = contract.connect(signer) as Contract;
+
+  const [txError, tx] = await toResult(
+    instance.mint(quantity, {
+      value: NFT_PRICE * ethers.toBigInt(quantity),
+    }) as Promise<Transaction>
+  );
+  if (txError) {
+    throw new Error(getShortErrorMessage(txError));
+  }
+
+  return tx.hash;
+}
