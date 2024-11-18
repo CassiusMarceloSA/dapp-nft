@@ -81,31 +81,44 @@ const Services = () => (
   <section className="pb-20 bg-gray-300 -mt-24">
     <div className="container mx-auto px-4">
       <div className="flex flex-wrap">
-        <Card
-          title="Let's Contribute"
-          description="Open source for all! Explore the GitHub repository and contribute to the project"
-          icon="github"
-          to={LINKS.github}
-          size="compact"
-          color="bg-red-400"
-        />
+        <Card.Wrapper size="compact">
+          <Card.LinkContainer to={LINKS.github}>
+            <Card.Content>
+              <Card.Icon icon="github" color="bg-red-400" />
+              <Card.Title>Let's Contribute</Card.Title>
+              <Card.Description>
+                Open source for all! Explore the GitHub repository and
+                contribute to the project
+              </Card.Description>
+            </Card.Content>
+          </Card.LinkContainer>
+        </Card.Wrapper>
 
-        <Card
-          title="Let's Talk"
-          description="Let's talk about your project and how I can help. Connect with me in LinkedIn"
-          icon="linkedin"
-          to={LINKS.linkedin}
-          color="bg-blue-400"
-        />
+        <Card.Wrapper>
+          <Card.LinkContainer to={LINKS.linkedin}>
+            <Card.Content>
+              <Card.Icon icon="linkedin" color="bg-blue-400" />
+              <Card.Title>Let's Talk</Card.Title>
+              <Card.Description>
+                Let's talk about your project and how I can help. Connect with
+                me in LinkedIn
+              </Card.Description>
+            </Card.Content>
+          </Card.LinkContainer>
+        </Card.Wrapper>
 
-        <Card
-          title="Let's be curious"
-          description="Experience the future now! Interact with the smart contract and see how it works"
-          icon="cpu"
-          to="https://testnet.snowtrace.io/address/0xf33b1b4Cb3afe064291d365534AB8822eE7BdD08/contract/43113/code"
-          size="compact"
-          color="bg-green-400"
-        />
+        <Card.Wrapper size="compact">
+          <Card.LinkContainer to={LINKS.contract}>
+            <Card.Content>
+              <Card.Icon icon="linkedin" color="bg-green-400" />
+              <Card.Title>Let's be Curious</Card.Title>
+              <Card.Description>
+                Experience the future now! Interact with the smart contract and
+                see how it works
+              </Card.Description>
+            </Card.Content>
+          </Card.LinkContainer>
+        </Card.Wrapper>
       </div>
 
       <div className="flex flex-wrap items-center mt-32">
