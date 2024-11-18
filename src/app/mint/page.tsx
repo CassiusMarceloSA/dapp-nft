@@ -7,6 +7,27 @@ import { toResult } from "@/utils";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 
+const UnauthenticatedHero = (props: {
+  onLogin: () => void;
+  message: string;
+}) => {
+  return (
+    <>
+      <h1 className="text-white font-semibold text-5xl">Mint your token(s)</h1>
+      <p className="mt-4 text-lg text-gray-300">
+        Connect your wallet and start minting right now!
+      </p>
+      <button
+        onClick={props.onLogin}
+        className="mt-8 mx-auto bg-white text-black font-bold py-2 px-4 rounded-lg flex items-center hover:bg-gray-300 transition-colors duration-200"
+      >
+        <img src="/metamask.svg" alt="MetaMask" className="w-6 h-6 mr-2" />
+        {props.message || "Connect with MetaMask"}
+      </button>
+    </>
+  );
+};
+
 const AuthButton = ({
   onClick,
   children,
@@ -26,13 +47,18 @@ const AuthButton = ({
 export default function Mint() {
   const [quantity, setQuantity] = useState(1);
   const [wallet, setWallet] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Checking wallet...");
+  const [isMinting, setIsMinting] = useState(false);
 
   const openseaURL = `${process.env.OPENSEA_URL}/${wallet}`;
 
   const clearMessage = () => setMessage("");
 
   const onLogin = async () => {
+    if (message) {
+      return;
+    }
+
     setMessage("Connecting to wallet...");
     const [authError, address] = await toResult(authenticate());
 
@@ -46,20 +72,22 @@ export default function Mint() {
     clearMessage();
   };
   const onLogout = () => {
-    setMessage("Logging out...");
     setWallet("");
     localStorage.removeItem("wallet");
   };
   const onMint = async () => {
-    setMessage("Minting...");
+    setIsMinting(true);
     const [txError, txHash] = await toResult(mint(quantity));
 
     if (txError) {
-      setMessage(txError.message);
+      alert(txError.message);
+      setIsMinting(false);
       return;
     }
     setQuantity(1);
-    setMessage("Minted! TxHash generated: " + txHash);
+    setIsMinting(false);
+
+    alert("Successfully minted!" + "\n Transaction hash: " + txHash);
   };
 
   const handleQuantity = (e: ChangeEvent<HTMLInputElement>) => {
@@ -72,6 +100,8 @@ export default function Mint() {
     if (wallet) {
       setWallet(wallet);
     }
+
+    clearMessage();
   }, []);
 
   return (
@@ -98,23 +128,55 @@ export default function Mint() {
           <div className="items-center flex flex-wrap">
             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div className="pr-12 ">
-                <h1 className="text-white font-semibold text-5xl">
-                  Mint your token(s)
-                </h1>
-                <p className="mt-4 text-lg text-gray-300">
-                  Connect your wallet and start minting right now!
-                </p>
-                <button
-                  onClick={onLogin}
-                  className="mt-8 mx-auto bg-white text-black font-bold py-2 px-4 rounded-lg flex items-center hover:bg-gray-300 transition-colors duration-200"
-                >
-                  <img
-                    src="/metamask.svg"
-                    alt="MetaMask"
-                    className="w-6 h-6 mr-2"
-                  />
-                  {message || "Connect with MetaMask"}
-                </button>
+                {wallet ? (
+                  <>
+                    <h1 className="text-white font-semibold text-5xl">
+                      Mint your token(s)
+                    </h1>
+                    <p className="mt-4 text-lg text-gray-300">
+                      Choose up to 5 mints in a row to save gas fees!
+                    </p>
+                    <div className="mb-4 mt-8 inline-flex flex-wrap">
+                      <input
+                        className="m-0 block disabled:opacity-70 rounded-l border border-r-0 border-solid border-neutral-300 bg-white bg-clip-padding px-3 py-[0.25rem] outline-none"
+                        type="number"
+                        placeholder="1"
+                        id="quantity"
+                        value={quantity}
+                        onChange={handleQuantity}
+                        disabled={isMinting}
+                      />
+                      <button
+                        className="relative z-[2] disabled:opacity-70 rounded-r text-bold bg-gray-300 hover:bg-gray-400 p-6 text-sm font-medium uppercase leading-tight shadow-md "
+                        type="button"
+                        onClick={onMint}
+                        disabled={isMinting}
+                      >
+                        {isMinting ? "Minting..." : "Mint"}
+                      </button>
+                    </div>
+                    <div className="text-center mt-6">
+                      <a
+                        className="bg-green-800 hover:bg-green-900 text-white font-bold p-3 inline-flex rounded items-center ml-3"
+                        href={openseaURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        type="button"
+                      >
+                        See at OpenSea
+                      </a>
+                      <button
+                        className="bg-red-800 hover:bg-red-900 text-white font-bold p-3 inline-flex rounded items-center ml-3"
+                        onClick={onLogout}
+                        type="button"
+                      >
+                        Disconnect
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <UnauthenticatedHero onLogin={onLogin} message={message} />
+                )}
               </div>
             </div>
           </div>
