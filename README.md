@@ -19,7 +19,7 @@ The smart contract for this project is deployed on the Avalanche Testnet and can
 
 ### Live Demo 🌐
 
-You can access the live demo of this project deployed on IPFS through Fleek [here](https://hollow-russia-screeching.on-fleek.app/mint).
+You can access the live demo of this project deployed on IPFS through Fleek [here](https://hollow-russia-screeching.on-fleek.app).
 
 ### About NFTs 🖼️
 
