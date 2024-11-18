@@ -4,7 +4,6 @@ import Card from "@/components/Card";
 import Layout from "@/components/Layout";
 import { authenticate, mint } from "@/services/web3";
 import { toResult } from "@/utils";
-import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const UnauthenticatedHero = (props: {
@@ -25,22 +24,6 @@ const UnauthenticatedHero = (props: {
         {props.message || "Connect with MetaMask"}
       </button>
     </>
-  );
-};
-
-const AuthButton = ({
-  onClick,
-  children,
-  id,
-}: {
-  onClick: () => void;
-  children: React.ReactNode;
-  id: string;
-}) => {
-  return (
-    <button className="btn-primary" onClick={onClick} id={id} type="button">
-      {children}
-    </button>
   );
 };
 
