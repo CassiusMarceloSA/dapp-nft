@@ -235,7 +235,7 @@ export default function Mint() {
           </div>
           <div className="w-full lg:w-3/12 px-4 text-center">
             <div className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-              <img src="calendar.svg" alt="shopping cart icon" />
+              <img src="shopping-cart.svg" alt="shopping cart icon" />
             </div>
             <h5 className="text-xl mt-5 font-semibold text-white">
               Sell later

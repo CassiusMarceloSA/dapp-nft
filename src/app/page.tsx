@@ -3,6 +3,7 @@
 import { LINKS } from "@/contants/links";
 import Layout from "@/components/Layout";
 import Card from "@/components/Card";
+import Link from "next/link";
 
 const TEAM_PICS = [
   "https://media.licdn.com/dms/image/v2/C4D03AQEtky8V4JWrYA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1571681049955?e=1737590400&v=beta&t=Nv0NOzqUYPo71C6OQuB8YYOAYESEtOeu4gPCiYZlxjU",
@@ -110,7 +111,7 @@ const Services = () => (
         <Card.Wrapper size="compact">
           <Card.LinkContainer to={LINKS.contract}>
             <Card.Content>
-              <Card.Icon icon="linkedin" color="bg-green-400" />
+              <Card.Icon icon="cpu" color="bg-green-400" />
               <Card.Title>Let's be Curious</Card.Title>
               <Card.Description>
                 Experience the future now! Interact with the smart contract and
@@ -133,12 +134,12 @@ const Services = () => (
           <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
             Join us and experience the thrill of minting your own unique tokens!
           </p>
-          <a
+          <Link
             href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
             className="font-bold text-gray-800 mt-8"
           >
             Mint here!
-          </a>
+          </Link>
         </div>
 
         <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
