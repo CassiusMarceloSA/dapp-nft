@@ -135,7 +135,7 @@ const Services = () => (
             Join us and experience the thrill of minting your own unique tokens!
           </p>
           <Link
-            href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
+            href="/mint"
             className="font-bold text-gray-800 mt-8"
           >
             Mint here!
