@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## NFT Mint
 
-## Getting Started
+This project is a NFT minting platform developed with a focus on understanding the web3 environment. The main objective was to explore and comprehend the functioning of blockchain technologies and NFTs, prioritizing the implementation of web3 functionalities over conventional web2 development practices.
 
-First, run the development server:
+**Note: This project was created solely for educational and learning purposes. It is not intended for production use.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- React
+- Next.js
+- Solidity
+- Web3.js
+- Avalanche Network (Testnet)
+- MetaMask
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Smart Contract
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The smart contract for this project is deployed on the Avalanche Testnet and can be viewed [here](https://testnet.snowtrace.io/address/0xf33b1b4Cb3afe064291d365534AB8822eE7BdD08/contract/43113/code).
 
-## Learn More
+### About NFTs
 
-To learn more about Next.js, take a look at the following resources:
+NFTs (Non-Fungible Tokens) are unique and indivisible tokens that represent digital or physical assets on the blockchain. In this project, we implemented the functionality of minting NFTs. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The NFTs minted in this project can be traded on OpenSea's testnet marketplace.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Future Improvements
 
-## Deploy on Vercel
+The project has several opportunities for technical improvements:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Infrastructure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   - Implementation of integration testing pipeline
+   - Implementation of end-to-end tests
+   - Automated deployment pipeline
+
+2. Interface
+   - Replacement of alerts with toast notifications
+   - Implementation of confirmation modals for important actions
+   - Enhancement of user experience for different application states
