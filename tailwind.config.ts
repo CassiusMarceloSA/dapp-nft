@@ -7,6 +7,10 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      display: ["Noto Sans", "sans-serif"],
+      body: ["Noto Sans", "sans-serif"],
+    },
     extend: {
       colors: {
         background: "var(--background)",
@@ -15,4 +19,5 @@ export default {
     },
   },
   plugins: [],
+  purge: false,
 } satisfies Config;
