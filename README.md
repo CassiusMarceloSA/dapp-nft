@@ -2,6 +2,8 @@
 
 This project is a NFT minting platform developed with a focus on understanding the web3 environment. The main objective was to explore and comprehend the functioning of blockchain technologies and NFTs, prioritizing the implementation of web3 functionalities over conventional web2 development practices.
 
+**Note: This project was created solely for educational and learning purposes. It is not intended for production use.**
+
 ### Technologies Used
 
 - React
@@ -17,7 +19,9 @@ The smart contract for this project is deployed on the Avalanche Testnet and can
 
 ### About NFTs
 
-NFTs (Non-Fungible Tokens) are unique and indivisible tokens that represent digital or physical assets on the blockchain. In this project, we implemented the functionality of minting, buying, and selling NFTs in a decentralized environment.
+NFTs (Non-Fungible Tokens) are unique and indivisible tokens that represent digital or physical assets on the blockchain. In this project, we implemented the functionality of minting NFTs. 
+
+The NFTs minted in this project can be traded on OpenSea's testnet marketplace.
 
 ### Future Improvements
 
