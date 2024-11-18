@@ -23,6 +23,15 @@ NFTs (Non-Fungible Tokens) are unique and indivisible tokens that represent digi
 
 The NFTs minted in this project can be traded on OpenSea's testnet marketplace. 🌊
 
+### Minting Requirements 💰
+
+To mint NFTs on this platform, you'll need AVAX tokens on the Avalanche Testnet. You can obtain test AVAX tokens for free through these faucets:
+
+- [Avalanche Faucet](https://faucet.avax.network/)
+- [Core Faucet](https://core.app/tools/testnet-faucet/?subnet=c&token=c)
+
+Make sure to have your MetaMask wallet connected to the Avalanche Testnet before requesting tokens.
+
 ### Future Improvements 🚀
 
 The project has several opportunities for technical improvements:
