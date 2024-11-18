@@ -1,7 +1,8 @@
 "use client";
 
 import { LINKS } from "@/contants/links";
-import Layout from "../components/Layout";
+import Layout from "@/components/Layout";
+import Card from "@/components/Card";
 
 const TEAM_PICS = [
   "https://media.licdn.com/dms/image/v2/C4D03AQEtky8V4JWrYA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1571681049955?e=1737590400&v=beta&t=Nv0NOzqUYPo71C6OQuB8YYOAYESEtOeu4gPCiYZlxjU",
@@ -9,7 +10,7 @@ const TEAM_PICS = [
 ];
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <Layout title="Home | Prototype NFT Collection">
     <Hero />
     <Services />
     <Team />
@@ -75,43 +76,6 @@ const Hero = () => (
     </div>
   </div>
 );
-
-type CardProps = {
-  title: string;
-  description: string;
-  icon: string;
-  to: string;
-  size?: "compact" | "regular";
-  color: string;
-};
-
-const Card = ({ size = "regular", ...props }: CardProps) => {
-  const position =
-    size === "compact"
-      ? "lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center"
-      : "w-full md:w-4/12 px-4 text-center";
-
-  return (
-    <div className={position}>
-      <a
-        className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg  cursor-pointer hover:scale-105 transition-all"
-        href={props.to}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div className="px-4 py-5 flex-auto">
-          <div
-            className={`text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full ${props.color}`}
-          >
-            <img src={`/${props.icon}.svg`} alt={`${props.icon} icon`} />
-          </div>
-          <h6 className="text-xl font-semibold">{props.title}</h6>
-          <p className="mt-2 mb-4 text-gray-600">{props.description}</p>
-        </div>
-      </a>
-    </div>
-  );
-};
 
 const Services = () => (
   <section className="pb-20 bg-gray-300 -mt-24">
