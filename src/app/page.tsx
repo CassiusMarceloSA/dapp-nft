@@ -1,18 +1,12 @@
 "use client";
 
+import { LINKS } from "@/contants/links";
 import Layout from "../components/Layout";
 
 const TEAM_PICS = [
   "https://media.licdn.com/dms/image/v2/C4D03AQEtky8V4JWrYA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1571681049955?e=1737590400&v=beta&t=Nv0NOzqUYPo71C6OQuB8YYOAYESEtOeu4gPCiYZlxjU",
   "https://lh3.googleusercontent.com/a/ACg8ocLGKPKk8fG7TPQ9WPA6nYLPyHYCm8TP7nWH9qjapP5Q-wB1Rwfkn3ng6GdDqRW4suLiMy10mrUcm-ZPiYlaJTz-UDsEhqu7=s288-c-no",
 ];
-
-const LINKS = {
-  github: "https://github.com/CassiusMarceloSA/dapp-nft",
-  linkedin: "https://www.linkedin.com/in/cassius-de-avila/",
-  contract:
-    "https://testnet.snowtrace.io/address/0xf33b1b4Cb3afe064291d365534AB8822eE7BdD08/contract/43113/code",
-};
 
 const IndexPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
