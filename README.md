@@ -17,6 +17,10 @@ This project is a NFT minting platform developed with a focus on understanding t
 
 The smart contract for this project is deployed on the Avalanche Testnet and can be viewed [here](https://testnet.snowtrace.io/address/0xf33b1b4Cb3afe064291d365534AB8822eE7BdD08/contract/43113/code).
 
+### Live Demo 🌐
+
+You can access the live demo of this project deployed on IPFS through Fleek [here](https://hollow-russia-screeching.on-fleek.app/mint).
+
 ### About NFTs 🖼️
 
 NFTs (Non-Fungible Tokens) are unique and indivisible tokens that represent digital or physical assets on the blockchain. In this project, we implemented the functionality of minting NFTs. 
